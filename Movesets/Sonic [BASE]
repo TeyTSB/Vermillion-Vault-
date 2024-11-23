@@ -1,0 +1,380 @@
+-- [SONIC THE HEDGEHOG]
+-- if your seeings this u has the source code!!
+
+-- [[SETUP]]
+
+game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.MagicHealth.Health.Bar.Bar.ImageColor3 = Color3.fromRGB(255,255,102)
+
+-- [[MOVE SETUP]]
+
+local Move1 = "Speedy Breakdance"  
+local Move2 = "0.1 Second Beatdown"  
+local Move3 = "Chest Slicing Hit"  
+local Move4 = "Ground Breaker"  
+local Ult = "TRANSCENDENT GIFT"  
+
+local function updateToolName()
+   local player = game.Players.LocalPlayer
+   local playerGui = player:WaitForChild("PlayerGui")
+   local hotbar = playerGui:WaitForChild("Hotbar")
+   local backpack = hotbar:WaitForChild("Backpack")
+   local hotbarFrame = backpack:WaitForChild("Hotbar")
+   
+   if hotbarFrame:FindFirstChild("1") then
+       local tool = hotbarFrame["1"]:FindFirstChild("Base")
+       if tool then
+           local toolName = tool:FindFirstChild("ToolName")
+           if toolName then
+               toolName.Text = Move1
+           else
+               warn("ToolName not found in Base")
+           end
+       else
+           warn("Base not found in Hotbar.1")
+       end
+   else
+       warn("Hotbar.1 not found")
+   end
+end
+
+
+local player = game.Players.LocalPlayer
+   local playerGui = player:WaitForChild("PlayerGui")
+   local hotbar = playerGui:WaitForChild("Hotbar")
+   local backpack = hotbar:WaitForChild("Backpack")
+   local hotbarFrame = backpack:WaitForChild("Hotbar")
+   if hotbarFrame:FindFirstChild("2") then
+       local tool = hotbarFrame["2"]:FindFirstChild("Base")
+       if tool then
+           local toolName = tool:FindFirstChild("ToolName")
+           if toolName then
+               toolName.Text = Move2
+           else
+               warn("ToolName not found in Base")
+           end
+       else
+           warn("Base not found in Hotbar.2")
+       end
+   else
+       warn("Hotbar.2 not found")
+   end
+
+local player = game.Players.LocalPlayer
+   local playerGui = player:WaitForChild("PlayerGui")
+   local hotbar = playerGui:WaitForChild("Hotbar")
+   local backpack = hotbar:WaitForChild("Backpack")
+   local hotbarFrame = backpack:WaitForChild("Hotbar")
+   if hotbarFrame:FindFirstChild("3") then
+       local tool = hotbarFrame["3"]:FindFirstChild("Base")
+       if tool then
+           local toolName = tool:FindFirstChild("ToolName")
+           if toolName then
+               toolName.Text = Move3
+           else
+               warn("ToolName not found in Base")
+           end
+       else
+           warn("Base not found in Hotbar.3")
+       end
+   else
+       warn("Hotbar.3 not found")
+   end
+
+local player = game.Players.LocalPlayer
+   local playerGui = player:WaitForChild("PlayerGui")
+   local hotbar = playerGui:WaitForChild("Hotbar")
+   local backpack = hotbar:WaitForChild("Backpack")
+   local hotbarFrame = backpack:WaitForChild("Hotbar")
+   if hotbarFrame:FindFirstChild("4") then
+       local tool = hotbarFrame["4"]:FindFirstChild("Base")
+       if tool then
+           local toolName = tool:FindFirstChild("ToolName")
+           if toolName then
+               toolName.Text = Move4
+           else
+               warn("ToolName not found in Base")
+           end
+       else
+           warn("Base not found in Hotbar.4")
+       end
+   else
+       warn("Hotbar.4 not found")
+   end
+
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+local screenGui = playerGui:FindFirstChild("ScreenGui")
+if screenGui then
+   local magicHealthFrame = screenGui:FindFirstChild("MagicHealth")
+   if magicHealthFrame then
+       local textLabel = magicHealthFrame:FindFirstChild("TextLabel")
+       if textLabel then
+           textLabel.Text = Ult
+       end
+   end
+end
+
+playerGui.DescendantAdded:Connect(function(descendant)
+   if descendant:IsDescendantOf(screenGui) then
+       local magicHealthFrame = screenGui:FindFirstChild("MagicHealth")
+       if magicHealthFrame then
+           local textLabel = magicHealthFrame:FindFirstChild("TextLabel")
+           if textLabel and textLabel.Text == "" then
+               textLabel.Text = Ult
+           end
+       end
+   end
+end)
+
+
+updateToolName()
+
+wait(1)
+
+--[TOOL SETUP]
+
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+
+local newAnimationId = "16023456135"
+local animationIds = {
+    "10468665991"
+}
+
+
+local function stopAnimations()
+    for _, track in ipairs(humanoid:GetPlayingAnimationTracks()) do
+        if table.find(animationIds, track.Animation.AnimationId:match("%d+$")) then
+            track:Stop()
+        end
+    end
+end
+
+
+local function playNewAnimation()
+    local animation = Instance.new("Animation")
+    animation.AnimationId = "rbxassetid://" .. newAnimationId
+
+    local animationTrack = humanoid:LoadAnimation(animation)
+    animationTrack:Play()
+    animationTrack.TimePosition = 2 
+    animationTrack:AdjustSpeed(1) 
+
+    task.delay(1, function()
+        animationTrack:Stop()
+    end)
+end
+
+
+local function onAnimationTrackStarted(track)
+    if table.find(animationIds, track.Animation.AnimationId:match("%d+$")) then
+        stopAnimations() 
+        playNewAnimation() 
+    end
+end
+
+humanoid.AnimationPlayed:Connect(onAnimationTrackStarted)
+
+-- --------------------------------------------------------------------------------------------------
+
+
+
+
+
+-- [           0.1 Second Barrage                ]
+
+
+
+
+
+
+
+
+
+
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+
+local newAnimationId = "12273188754"
+local animationIds = {
+    "10466974800"
+}
+
+
+local function stopAnimations()
+    for _, track in ipairs(humanoid:GetPlayingAnimationTracks()) do
+        if table.find(animationIds, track.Animation.AnimationId:match("%d+$")) then
+            track:Stop()
+        end
+    end
+end
+
+
+local function playNewAnimation()
+    local animation = Instance.new("Animation")
+    animation.AnimationId = "rbxassetid://" .. newAnimationId
+
+    local animationTrack = humanoid:LoadAnimation(animation)
+    animationTrack:Play()
+    animationTrack.TimePosition = 0 
+    animationTrack:AdjustSpeed(1)
+
+    task.delay(1.97, function()
+        animationTrack:Stop()
+    end)
+end
+
+
+local function onAnimationTrackStarted(track)
+    if table.find(animationIds, track.Animation.AnimationId:match("%d+$")) then
+        stopAnimations() 
+        playNewAnimation() 
+    end
+end
+
+humanoid.AnimationPlayed:Connect(onAnimationTrackStarted)
+
+
+
+
+
+-- --------------------------------------------------------------------------------------------------
+
+
+-- [           Chest Slicing Hit                ]
+
+
+
+
+
+
+
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+
+local newAnimationId = "15391323441"
+local animationIds = {
+    "10471336737"
+}
+
+
+local function stopAnimations()
+    for _, track in ipairs(humanoid:GetPlayingAnimationTracks()) do
+        if table.find(animationIds, track.Animation.AnimationId:match("%d+$")) then
+            track:Stop()
+        end
+    end
+end
+
+
+local function playNewAnimation()
+    local animation = Instance.new("Animation")
+    animation.AnimationId = "rbxassetid://" .. newAnimationId
+
+    local animationTrack = humanoid:LoadAnimation(animation)
+    animationTrack:Play()
+    animationTrack.TimePosition = 5.2
+    animationTrack:AdjustSpeed(1.5)
+
+    task.delay(1.97, function()
+        animationTrack:Stop()
+    end)
+end
+
+
+local function onAnimationTrackStarted(track)
+    if table.find(animationIds, track.Animation.AnimationId:match("%d+$")) then
+        stopAnimations() 
+        playNewAnimation() 
+    end
+end
+
+humanoid.AnimationPlayed:Connect(onAnimationTrackStarted)
+
+
+
+
+
+
+-- --------------------------------------------------------------------------------------------------
+
+
+-- [           Ground Breaker                ]
+
+
+
+
+
+
+
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+
+local newAnimationId = "18897119503"
+local animationIds = {
+    "12510170988"
+}
+
+
+local function stopAnimations()
+    for _, track in ipairs(humanoid:GetPlayingAnimationTracks()) do
+        if table.find(animationIds, track.Animation.AnimationId:match("%d+$")) then
+            track:Stop()
+        end
+    end
+end
+
+
+local function playNewAnimation()
+    local animation = Instance.new("Animation")
+    animation.AnimationId = "rbxassetid://" .. newAnimationId
+
+    local animationTrack = humanoid:LoadAnimation(animation)
+    animationTrack:Play()
+    animationTrack.TimePosition = 0
+    animationTrack:AdjustSpeed(1) 
+
+    task.delay(1.97, function()
+        animationTrack:Stop()
+    end)
+end
+
+
+local function onAnimationTrackStarted(track)
+    if table.find(animationIds, track.Animation.AnimationId:match("%d+$")) then
+        stopAnimations() 
+        playNewAnimation() 
+    end
+end
+
+humanoid.AnimationPlayed:Connect(onAnimationTrackStarted)
+
+
+local targetAnimationId = "12510170988"
+
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+
+local function anchorPlayerForOneSecond()
+    local rootPart = character:WaitForChild("HumanoidRootPart")
+    rootPart.Anchored = true
+
+    wait(1)
+
+    rootPart.Anchored = false
+end
+
+humanoid.AnimationPlayed:Connect(function(track)
+    if track.Animation.AnimationId == "rbxassetid://" .. targetAnimationId then
+        anchorPlayerForOneSecond()
+    end
+end)
+
+
